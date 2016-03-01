@@ -12,4 +12,7 @@ WORKDIR /toran
 
 ENTRYPOINT php-fpm && nginx
 
+EXPOSE 80
+EXPOSE 443
+
 COPY ./src /toran
