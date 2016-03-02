@@ -20,11 +20,11 @@ EXPOSE 80
 EXPOSE 443
 
 COPY ./src /toran
-RUN sudo -u www composer install --prefer-dist \
-    && mkdir -p app/toran app/cache app/logs web/repo \
+RUN mkdir -p app/toran app/cache app/logs web/repo vendor \
     && touch app/bootstrap.php.cache \
-    && chown www:root app/toran app/cache app/logs web/repo app/bootstrap.php.cache \
+    && chown www:root app/toran app/cache app/logs web/repo app/bootstrap.php.cache vendor \
     && cp app/config/parameters.yml.dist app/config/parameters.yml \
-    && sed -i 's/example.org/composer.8891.com.tw/g' app/config/parameters.yml
+    && sed -i 's/example.org/composer.8891.com.tw/g' app/config/parameters.yml \
+    && sudo -u www composer install --prefer-dist
     
 VOLUME /toran/app/toran
