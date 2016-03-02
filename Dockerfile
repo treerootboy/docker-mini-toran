@@ -10,7 +10,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 WORKDIR /toran
 
-ENTRYPOINT php-fpm && nginx
+ENTRYPOINT php-fpm && nginx -g "daemon off;"
 
 EXPOSE 80
 EXPOSE 443
