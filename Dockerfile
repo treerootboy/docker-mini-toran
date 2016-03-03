@@ -16,7 +16,6 @@ ENTRYPOINT php-fpm && nginx -g "daemon off;"
 EXPOSE 80
 EXPOSE 443
 
-COPY ./src /toran
 RUN adduser -u8080 -D -H www \
     && chown www:root app/toran app/cache app/logs web/repo app/bootstrap.php.cache \
     && cp app/config/parameters.yml.dist app/config/parameters.yml
