@@ -10,7 +10,9 @@ RUN apk add --update tar wget openssl php-json php-openssl nginx php-fpm php-cty
     && cd /toran \
     && chown www:root app/toran app/cache app/logs web/repo app/bootstrap.php.cache \
     && cp app/config/parameters.yml.dist app/config/parameters.yml \
-    && sed -i 's/nobody/www/g' /etc/php/php-fpm.conf
+    && sed -i 's/nobody/www/g' /etc/php/php-fpm.conf \
+    && sed -i 's/pm = dynamic/pm = static/g' /etc/php/php-fpm.conf \
+    && sed -i 's/pm.max_children = 5/pm.max_children = 10/g' /etc/php/php-fpm.conf
     
 WORKDIR /toran
 VOLUME /toran/app/toran
